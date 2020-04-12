@@ -26,7 +26,7 @@ $PageOptions['ContactEmail']                         = ''; 	        // Support E
 
 $PageOptions['DashboardVersion']                     = '1.0';		// Dashboard Version
 
-$PageOptions['PageRefreshActive']                    = false;		// Activate automatic refresh
+$PageOptions['PageRefreshActive']                    = true;		// Activate automatic refresh
 $PageOptions['PageRefreshDelay']                     = '10000';		// Page refresh time in miliseconds
 
 $PageOptions['RepeatersPage'] = array();
@@ -53,7 +53,7 @@ $PageOptions['MetaAuthor']                           = 'LX1IQ';                 
 $PageOptions['MetaRevisit']                          = 'After 30 Days';                                              // Meta Tag Values, usefull for Search Engine
 $PageOptions['MetaRobots']                           = 'index,follow';                                               // Meta Tag Values, usefull for Search Engine
 
-$PageOptions['UserPage']['ShowFilter']               = true;								// Show Filter on Users page
+$PageOptions['UserPage']['ShowFilter']               = false;								// Show Filter on Users page
 $PageOptions['Traffic']['Show']                      = false;								// Enable vnstat traffic statistics
 
 $PageOptions['CustomTXT']                            = 'Sysop N0CALL';					// custom text in your header   
