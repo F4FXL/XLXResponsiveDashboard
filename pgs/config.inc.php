@@ -1,4 +1,4 @@
-<?php<?php
+<?php
 /*
 Possible values for IPModus
 
@@ -70,6 +70,7 @@ $PageOptions['Traffic']['Show']                      = false;								// Enable v
 
 $PageOptions['CustomTXT']                            = 'Sysop F5KAV R.A.C.C.W';					// custom text in your header   
 $PageOptions['CustomTXTLink']                        = 'https://www.f5kav.fr';
+$PageOptions['LogoFile']                             = './img/International_amateur_radio_symbol.png';
 
 $Service['PIDFile']                                  = '/var/log/xlxd.pid';
 $Service['XMLFile']                                  = '/var/log/xlxd.xml';
@@ -97,7 +98,7 @@ $VNStat['Binary']                                    = '/usr/bin/vnstat';
 if (file_exists("../config.inc.php"))
 {
   $PageOptions['ModuleNames'] = array(); 
-  include ("../config.inc.php");
+  include_once ("../config.inc.php");
 }
 
 ?>

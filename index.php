@@ -145,7 +145,7 @@ if ($CallingHome['Active']) {
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <div class="media border-right mr-3 pr-0">
-        <img class="m-0 p-0" style="height:75px;" src="img/logo_kav.png">
+        <img class="m-0 p-0" style="height:75px;" src="<?php echo $PageOptions['LogoFile']; ?>">
         <div class="media-body text-center">
         <p class="navbar-brand h1 mt-0 mb-0 ml-3 mr-3" ><?php echo $Reflector->GetReflectorName(); ?></p>
         <p class="border-top pt-1 mt-0 mb-0 ml-3 mr-3"><small><a target="_blank" href="<?php echo $PageOptions['CustomTXTLink']; ?>"><?php echo $PageOptions['CustomTXT'];?></a></small></p>
