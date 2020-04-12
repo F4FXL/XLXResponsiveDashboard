@@ -62,7 +62,8 @@ $PageOptions['LogoFile']                             = './img/International_amat
 
 $Service['PIDFile']                                  = '/var/log/xlxd.pid';
 $Service['XMLFile']                                  = '/var/log/xlxd.xml';
-$Service['AmbedFile']                                = '/var/log/ambed.pid';
+$Service['AmbedStatusCommand']                       = 'pgrep ambed';
+$Service['xlxdStatusCommand']                        = 'pgrep xlxd';
 
 $CallingHome['Active']                               = true;					               // xlx phone home, true or false
 $CallingHome['MyDashBoardURL']                       = 'http://xlx208.f5kav.fr';			       // dashboard url

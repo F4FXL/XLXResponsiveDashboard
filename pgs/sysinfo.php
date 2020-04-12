@@ -16,7 +16,6 @@ function shapeSpace_server_memory_usage()
 
 function shapeSpace_server_uptime()
 {
-	
 	$uptime = floor(preg_replace ('/\.[0-9]+/', '', file_get_contents('/proc/uptime')));
 	return (int)$uptime;	
 }
@@ -30,11 +29,13 @@ function get_process_system_usage($processname)
     return $usage;
 }
 
-function isAmbedRunning($pidfile)
+function checkProcessStatus($command)
 {
-    $out = file_get_contents($pidfile);
-    return $out;
+    $out = exec($command);
+    return $out != "";
 }
+
+$xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
 ?>
 <div class="row justify-content-md-center">
     <div class="col">
@@ -57,20 +58,24 @@ function isAmbedRunning($pidfile)
                 <td><?php echo round(sys_getloadavg()[0] * 100.0, 1) . "%"; ?></td>
             </tr>
             <tr>
+                <th scope="row">XLX Reflector process status</th>
+                <td><img src="<?php echo ($xlxdStatus ? "img/up.png" : "img/down.png" )?>"></td>
+            </tr>
+            <tr>
                 <th scope="row">XLX Reflector up time</th>
-                <td><?php echo FormatSeconds($Reflector->GetServiceUptime()); ?></td>
+                <td><?php echo ($xlxdStatus ? FormatSeconds($Reflector->GetServiceUptime()) : "-"); ?></td>
             </tr>
             <tr>
                 <th scope="row">XLX Reflector CPU usage</th>
-                <td><?php echo get_process_system_usage("xlxd")[0] . "%"; ?></td>
+                <td><?php echo ($xlxdStatus ? get_process_system_usage("xlxd")[0] . "%" : "-"); ?></td>
             </tr>
             <tr>
                 <th scope="row">XLX Reflector memory usage</th>
-                <td><?php echo get_process_system_usage("xlxd")[1] . "%"; ?></td>
+                <td><?php echo ($xlxdStatus ? get_process_system_usage("xlxd")[1] . "%" : "-"); ?></td>
             </tr>
             <tr>
                 <th scope="row">XLX Reflector transcoding status</th>
-                <td><img src="<?php echo isAmbedRunning($Service['AmbedFile']) != ""? "img/up.png" : "img/down.png" ?>"></td>
+                <td><img src="<?php echo checkProcessStatus($Service['AmbedStatusCommand']) ? "img/up.png" : "img/down.png" ?>"></td>
             </tr>
         </tbody>
    </div>
