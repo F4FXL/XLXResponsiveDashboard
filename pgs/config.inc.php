@@ -1,5 +1,12 @@
 <?php
 /*
+* If you do not want to mess with the distribution file
+* you can overwrite all of those values in the config.inc.user.php
+* file in the root folder
+*/
+
+
+/*
 Possible values for IPModus
 
 HideIP
@@ -36,27 +43,8 @@ $PageOptions['LastHeardPage']['LimitTo']             = 39;		// Number of station
 
 $PageOptions['ModuleNames'] = array();                                			// Module nomination
 $PageOptions['ModuleNames']['A']                     = 'Interlink XLX';
-$PageOptions['ModuleNames']['B']                     = 'France';
-$PageOptions['ModuleNames']['C']                     = 'Dstar/TG20867/YSF';
-$PageOptions['ModuleNames']['D']                     = 'MMDVM TG6 DMR';
-$PageOptions['ModuleNames']['E']                     = 'Auvergne-Rhone-Alpes';
-$PageOptions['ModuleNames']['F']                     = 'Bourgogne-Franche-Comté';
-$PageOptions['ModuleNames']['G']                     = 'Bretagne';
-$PageOptions['ModuleNames']['H']                     = 'Centre-Val de Loire';
-$PageOptions['ModuleNames']['I']                     = 'Corse';
-$PageOptions['ModuleNames']['J']                     = 'Grand Est';
-$PageOptions['ModuleNames']['K']                     = 'Hauts de France';
-$PageOptions['ModuleNames']['L']                     = 'Ile de France';
-$PageOptions['ModuleNames']['M']                     = 'Normandie';
-$PageOptions['ModuleNames']['N']                     = 'New Aquitaine';
-$PageOptions['ModuleNames']['O']                     = 'Occitanie';
-$PageOptions['ModuleNames']['P']                     = 'Pays de la Loire';
-$PageOptions['ModuleNames']['Q']                     = 'PACA';
-$PageOptions['ModuleNames']['R']                     = 'DOM-ToM';
-$PageOptions['ModuleNames']['S']                     = 'UNARAF';
-$PageOptions['ModuleNames']['T']                     = 'Test';
-$PageOptions['ModuleNames']['W']                     = 'World Wide';
-$PageOptions['ModuleNames']['X']                     = 'Sysop';
+$PageOptions['ModuleNames']['B']                     = 'National';
+$PageOptions['ModuleNames']['C']                     = 'Another Module';
 
 
 $PageOptions['MetaDescription']                      = 'XLX is a D-Star Reflector System for Ham Radio Operators.';  // Meta Tag Values, usefull for Search Engine
@@ -95,10 +83,10 @@ $VNStat['Binary']                                    = '/usr/bin/vnstat';
   this makes updating dashboard from git a little bit easier
 */
 
-if (file_exists(realpath(dirname(__FILE__)."/../config.inc.php")))
+if (file_exists(realpath(dirname(__FILE__)."/../config.inc.user.php")))
 {
   $PageOptions['ModuleNames'] = array(); 
-  include (realpath(dirname(__FILE__)."/../config.inc.php"));
+  include (realpath(dirname(__FILE__)."/../config.inc.user.php"));
 }
 
 ?>
