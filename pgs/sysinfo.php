@@ -1,6 +1,7 @@
 <?php
 //https://wp-mix.com/php-get-server-information/
-function shapeSpace_server_memory_usage() {
+function shapeSpace_server_memory_usage()
+{
  
 	$free = shell_exec('free');
 	$free = (string)trim($free);
@@ -13,7 +14,8 @@ function shapeSpace_server_memory_usage() {
 	return $memory_usage;	
 }
 
-function shapeSpace_server_uptime() {
+function shapeSpace_server_uptime()
+{
 	
 	$uptime = floor(preg_replace ('/\.[0-9]+/', '', file_get_contents('/proc/uptime')));
 	return (int)$uptime;	
@@ -26,6 +28,12 @@ function get_process_system_usage($processname)
     $ps = (string)trim(exec($pscmd));
     $usage = array_merge(array_filter(explode(" ", $ps)));
     return $usage;
+}
+
+function isAmbedRunning($pidfile)
+{
+    $out = file_get_contents($pidfile);
+    return $out;
 }
 ?>
 <div class="row justify-content-md-center">
@@ -59,6 +67,10 @@ function get_process_system_usage($processname)
             <tr>
                 <th scope="row">XLX Reflector memory usage</th>
                 <td><?php echo get_process_system_usage("xlxd")[1] . "%"; ?></td>
+            </tr>
+            <tr>
+                <th scope="row">XLX Reflector transcoding status</th>
+                <td><img src="<?php echo isAmbedRunning($Service['AmbedFile']) != ""? "img/up.png" : "img/down.png" ?>"></td>
             </tr>
         </tbody>
    </div>
