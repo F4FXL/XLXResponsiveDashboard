@@ -56,8 +56,8 @@ $PageOptions['MetaRobots']                           = 'index,follow';          
 $PageOptions['UserPage']['ShowFilter']               = true;								// Show Filter on Users page
 $PageOptions['Traffic']['Show']                      = false;								// Enable vnstat traffic statistics
 
-$PageOptions['CustomTXT']                            = 'Sysop F5KAV R.A.C.C.W';					// custom text in your header   
-$PageOptions['CustomTXTLink']                        = 'https://www.f5kav.fr';
+$PageOptions['CustomTXT']                            = 'Sysop N0CALL';					// custom text in your header   
+$PageOptions['CustomTXTLink']                        = 'https://html5zombo.com/';
 $PageOptions['LogoFile']                             = './img/International_amateur_radio_symbol.png';
 
 $Service['PIDFile']                                  = '/var/log/xlxd.pid';
