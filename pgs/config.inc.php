@@ -17,7 +17,7 @@ $VNStat      = array();
 
 $PageOptions['ContactEmail']                         = ''; 	        // Support E-Mail address
 
-$PageOptions['DashboardVersion']                     = '2.4.0';		// Dashboard Version
+$PageOptions['DashboardVersion']                     = '1.0';		// Dashboard Version
 
 $PageOptions['PageRefreshActive']                    = false;		// Activate automatic refresh
 $PageOptions['PageRefreshDelay']                     = '10000';		// Page refresh time in miliseconds
@@ -94,7 +94,9 @@ $VNStat['Binary']                                    = '/usr/bin/vnstat';
   this makes updating dashboard from git a little bit easier
 */
 
-if (file_exists("../config.inc.php")) {$PageOptions['ModuleNames'] = array(); 
+if (file_exists("../config.inc.php"))
+{
+  $PageOptions['ModuleNames'] = array(); 
   include ("../config.inc.php");
 }
 
