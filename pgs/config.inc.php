@@ -95,10 +95,10 @@ $VNStat['Binary']                                    = '/usr/bin/vnstat';
   this makes updating dashboard from git a little bit easier
 */
 
-if (file_exists("../config.inc.php"))
+if (file_exists(realpath(dirname(__FILE__)."/../config.inc.php")))
 {
   $PageOptions['ModuleNames'] = array(); 
-  include_once ("../config.inc.php");
+  include (realpath(dirname(__FILE__)."/../config.inc.php"));
 }
 
 ?>
