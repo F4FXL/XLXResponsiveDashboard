@@ -42,12 +42,6 @@ class xReflector {
          $this->XMLContent = fread($handle, filesize($this->XMLFile));
          fclose($handle);
          
-         $this->ServiceName = substr($this->XMLContent, strpos($this->XMLContent, "<XLX")+4, 3);
-         if (!is_numeric($this->ServiceName)) {
-            $this->ServiceName = null;
-            return false;
-         }
-         
          $this->ReflectorName = "XLX".$this->ServiceName;
          
          $LinkedPeersName = "XLX".$this->ServiceName."  linked peers";
