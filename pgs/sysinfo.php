@@ -58,6 +58,10 @@ $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
                 <td><?php echo round(sys_getloadavg()[0] * 100.0, 1) . "%"; ?></td>
             </tr>
             <tr>
+                <th scope="row">XLX Software Version</th>
+                <td><?php echo $PageOptions['xlxdVersion'] ?></td>
+            </tr>
+            <tr>
                 <th scope="row">XLX Reflector process status</th>
                 <td><img src="<?php echo ($xlxdStatus ? "img/up.png" : "img/down.png" )?>"></td>
             </tr>
