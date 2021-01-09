@@ -1,4 +1,16 @@
 
+<?php $module = strtoupper($_GET['module']);
+if(!empty($module)) {?>
+<div class="row justify-content-md-center">
+    <div class="col">
+        <div class="page-header">
+        <h5>
+            <small>Utilisateurs du module : </small><?php echo $PageOptions['ModuleNames'][$module] ?>
+        </h5>
+        </div>
+    </div>
+</div>
+<?php } ?>
 <div class="row justify-content-md-center">
 <div class="col">
 <table class="table table-hover table-sm table-responsive-md">
@@ -16,8 +28,6 @@
 </thead>
 <tbody>
 <?php
-
-$module = strtoupper($_GET['module']);
 $Reflector->LoadFlags();
 for ($i=0;$i<$Reflector->StationCount();$i++) {
     if(empty($module) || $Reflector->Stations[$i]->GetModule() == $module)
