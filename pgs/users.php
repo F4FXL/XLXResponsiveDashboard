@@ -17,9 +17,10 @@
 <tbody>
 <?php
 
+$module = strtoupper($_GET['module']);
 $Reflector->LoadFlags();
 for ($i=0;$i<$Reflector->StationCount();$i++) {
-    if(empty($_GET['module']) || ($Reflector->Stations[$i]->GetModule() == strtoupper($_GET['module'])))
+    if(empty($module) || $Reflector->Stations[$i]->GetModule() == $module)
     {
         echo '
         <tr>
@@ -64,7 +65,7 @@ for ($i=0;$i<$Reflector->StationCount();$i++) {
 <thead>
 <?php 
 
-$Modules = $Reflector->GetModules();
+$Modules = empty($module) ? $Reflector->GetModules() : array($module);
 sort($Modules, SORT_STRING);
 echo '<tr>';
 for ($i=0;$i<count($Modules);$i++)
