@@ -19,36 +19,39 @@
 
 $Reflector->LoadFlags();
 for ($i=0;$i<$Reflector->StationCount();$i++) {
-    echo '
-    <tr>
-    <th scope="row">';
-    if ($i == 0 && $Reflector->Stations[$i]->GetLastHeardTime() > (time() - 60)) {
-        echo '<img src="./img/tx.gif" style="margin-top:3px;" height="20"/>';
-    } else {
-        echo($i + 1);
-    }
-    echo '</th>
-    <td>';
-    
-    list ($Flag, $Name) = $Reflector->GetFlag($Reflector->Stations[$i]->GetCallSign());
-    if (file_exists("./img/flags/".$Flag.".png"))
+    if(empty($_GET['module']) || ($Reflector->Stations[$i]->GetModule() == strtoupper($_GET['module'])))
     {
-        echo '<a href="#" data-toggle="tooltip" title="'. $Name . '"><img src="./img/flags/'.$Flag.'.png" class="table-flag" alt="'.$Name.'"></a>';
-    }
-    echo '</td>
-    <td><a href="https://www.qrz.com/db/' . $Reflector->Stations[$i]->GetCallsignOnly() . '" class="pl" target="_blank">' . $Reflector->Stations[$i]->GetCallsignOnly() . '</a></td>
-    <td>' . $Reflector->Stations[$i]->GetSuffix() . '</td>
-    <td><a href="https://www.aprsdirect.com/details/main/name/' . $Reflector->Stations[$i]->GetCallsignOnly() . '" class="pl" target="_blank"><img src="./img/sat.png" alt=""></a></td>
-    <td>' . $Reflector->Stations[$i]->GetVia();
-    if ($Reflector->Stations[$i]->GetPeer() != $Reflector->GetReflectorName()) {
-        echo ' / ' . $Reflector->Stations[$i]->GetPeer();
-    }
-    echo '</td>
-    <td>' . @date("d.m.Y H:i", $Reflector->Stations[$i]->GetLastHeardTime()) . '</td>
-    <td>' . $Reflector->Stations[$i]->GetModule() . '</td>
-    </tr>';
-    if ($i == $PageOptions['LastHeardPage']['LimitTo']) {
-        $i = $Reflector->StationCount() + 1;
+        echo '
+        <tr>
+        <th scope="row">';
+        if ($i == 0 && $Reflector->Stations[$i]->GetLastHeardTime() > (time() - 60)) {
+            echo '<img src="./img/tx.gif" style="margin-top:3px;" height="20"/>';
+        } else {
+            echo($i + 1);
+        }
+        echo '</th>
+        <td>';
+        
+        list ($Flag, $Name) = $Reflector->GetFlag($Reflector->Stations[$i]->GetCallSign());
+        if (file_exists("./img/flags/".$Flag.".png"))
+        {
+            echo '<a href="#" data-toggle="tooltip" title="'. $Name . '"><img src="./img/flags/'.$Flag.'.png" class="table-flag" alt="'.$Name.'"></a>';
+        }
+        echo '</td>
+        <td><a href="https://www.qrz.com/db/' . $Reflector->Stations[$i]->GetCallsignOnly() . '" class="pl" target="_blank">' . $Reflector->Stations[$i]->GetCallsignOnly() . '</a></td>
+        <td>' . $Reflector->Stations[$i]->GetSuffix() . '</td>
+        <td><a href="https://www.aprsdirect.com/details/main/name/' . $Reflector->Stations[$i]->GetCallsignOnly() . '" class="pl" target="_blank"><img src="./img/sat.png" alt=""></a></td>
+        <td>' . $Reflector->Stations[$i]->GetVia();
+        if ($Reflector->Stations[$i]->GetPeer() != $Reflector->GetReflectorName()) {
+            echo ' / ' . $Reflector->Stations[$i]->GetPeer();
+        }
+        echo '</td>
+        <td>' . @date("d.m.Y H:i", $Reflector->Stations[$i]->GetLastHeardTime()) . '</td>
+        <td><a href="index.php?show=users&module=' . $Reflector->Stations[$i]->GetModule() . '" class="pl">' . $Reflector->Stations[$i]->GetModule() . '</a></td>
+        </tr>';
+        if ($i == $PageOptions['LastHeardPage']['LimitTo']) {
+            $i = $Reflector->StationCount() + 1;
+        }
     }
 }
 
