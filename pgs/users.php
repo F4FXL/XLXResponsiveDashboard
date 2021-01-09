@@ -1,20 +1,20 @@
 
 <div class="row justify-content-md-center">
-   <div class="col">
-        <table class="table table-hover table-sm table-responsive-md">
-            <thead>
-                <tr class="table-center">   
-                    <th scope="row">#</th>
-                    <th scope="row">Flag</th>
-                    <th scope="row">Callsign</th>
-                    <th scope="row">Suffix</th>
-                    <th scope="row">DPRS</th>
-                    <th scope="row">Via / Peer</th>
-                    <th scope="row">Last heard</th>
-                    <th scope="row">Module<!-- <img src="./img/ear.png" alt="Listening on" / --></th>
-                </tr>
-            </thead>
-            <tbody>
+<div class="col">
+<table class="table table-hover table-sm table-responsive-md">
+<thead>
+<tr class="table-center">   
+<th scope="row">#</th>
+<th scope="row">Flag</th>
+<th scope="row">Callsign</th>
+<th scope="row">Suffix</th>
+<th scope="row">DPRS</th>
+<th scope="row">Via / Peer</th>
+<th scope="row">Last heard</th>
+<th scope="row">Module<!-- <img src="./img/ear.png" alt="Listening on" / --></th>
+</tr>
+</thead>
+<tbody>
 <?php
 
 $Reflector->LoadFlags();
@@ -56,74 +56,74 @@ for ($i=0;$i<$Reflector->StationCount();$i++) {
 }
 
 ?> 
-        </tbody>
-      </table>
-    </div>
-    <div class="col-md-4">
-        <table class="table table-hover table-sm table-responsive-md">
-            <thead>
-         <?php 
+</tbody>
+</table>
+</div>
+<div class="col-md-4">
+<table class="table table-hover table-sm table-responsive-md">
+<thead>
+<?php 
 
 $Modules = $Reflector->GetModules();
 sort($Modules, SORT_STRING);
 echo '<tr>';
 for ($i=0;$i<count($Modules);$i++)
 {
-   if (isset($PageOptions['ModuleNames'][$Modules[$i]]))
-   {
-      echo '<th scope="row">'.$PageOptions['ModuleNames'][$Modules[$i]];
-       if (trim($PageOptions['ModuleNames'][$Modules[$i]]) != "")
-       {
-           echo ' - ';
-       }
-      echo $Modules[$i].'</th>';
-   }
-   else
-   {
+    if (isset($PageOptions['ModuleNames'][$Modules[$i]]))
+    {
+        echo '<th scope="row">'.$PageOptions['ModuleNames'][$Modules[$i]];
+        if (trim($PageOptions['ModuleNames'][$Modules[$i]]) != "")
+        {
+            echo ' - ';
+        }
+        echo $Modules[$i].'</th>';
+    }
+    else
+    {
         echo '<th scope="row">'.$Modules[$i].'</th>';
-   }
+    }
 }
 
 echo '</tr></thead>
-    <tbody>';
+<tbody>';
 
-    $nodesGroupedByModules = array();
+$nodesGroupedByModules = array();
+foreach($Modules as $module)
+{
+    $nodesInModule = $Reflector->GetNodesInModulesById($module);
+    $count = count($nodesInModule);
+    if($count > $maxNodes)
+    $maxNodes = $count;
+    
+    $nodesGroupedByModules[$module] = array();
+    foreach($nodesInModule as $nodeId)
+    {
+        $nodesGroupedByModules[$module][] = $Reflector->GetCallsignAndSuffixByID($nodeId); 
+    }
+    sort($nodesGroupedByModules[$module], SORT_STRING); 
+}
+
+for ($j=0;$j<$maxNodes;$j++)
+{
+    echo '<tr>';
     foreach($Modules as $module)
     {
-        $nodesInModule = $Reflector->GetNodesInModulesById($module);
-        $count = count($nodesInModule);
-        if($count > $maxNodes)
-            $maxNodes = $count;
-        
-        $nodesGroupedByModules[$module] = array();
-        foreach($nodesInModule as $nodeId)
+        $nodesInModule = $nodesGroupedByModules[$module];
+        if($j < count($nodesInModule))
         {
-            $nodesGroupedByModules[$module][] = $Reflector->GetCallsignAndSuffixByID($nodeId); 
+            echo '<td>';
+            echo '<a href="https://www.aprsdirect.com/details/main/name/' . $nodesInModule[$j] . '" class="pl" target="_blank">'. $nodesInModule[$j] .'</a>';
+            echo '</td>';
         }
-        sort($nodesGroupedByModules[$module], SORT_STRING); 
-    }
-
-    for ($j=0;$j<$maxNodes;$j++)
-    {
-        echo '<tr>';
-        foreach($Modules as $module)
+        else
         {
-            $nodesInModule = $nodesGroupedByModules[$module];
-            if($j < count($nodesInModule))
-            {
-                echo '<td>';
-                echo '<a href="https://www.aprsdirect.com/details/main/name/' . $nodesInModule[$j] . '" class="pl" target="_blank">'. $nodesInModule[$j] .'</a>';
-                echo '</td>';
-            }
-            else
-            {
-                echo '<td>&nbsp;</td>';
-            }
+            echo '<td>&nbsp;</td>';
         }
-        echo '</tr>';
     }
+    echo '</tr>';
+}
 
 ?>
-        </tbody>
-      </table>
-   </div>
+</tbody>
+</table>
+</div>
