@@ -157,7 +157,7 @@ if ($CallingHome['Active']) {
     </button>
     <div class="nav collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="nav nav-pills nav-fill">
-            <a class="nav-link nav-item<?php echo ($_GET['show'] == "users" || $_GET['show'] == "") ? ' active' : ''; ?>" href="./index.php?show=users">Utilisateurs (<?php echo $Reflector->StationCount(); ?>) / Modules (<?php echo count($Reflector->GetModules()); ?>)</a>
+            <a class="nav-link nav-item<?php echo (($_GET['show'] == "users" || $_GET['show'] == "") && $_GET['module'] == "") ? ' active' : ''; ?>" href="./index.php?show=users">Utilisateurs (<?php echo $Reflector->StationCount(); ?>) / Modules (<?php echo count($Reflector->GetModules()); ?>)</a>
             <a class="nav-link nav-item<?php echo ($_GET['show'] == "repeaters") ? ' active' : ''; ?>" href="./index.php?show=repeaters">Relais / Nodes (<?php echo $Reflector->NodeCount(); ?>)</a>
             <a class="nav-link nav-item<?php echo ($_GET['show'] == "moduleslist") ? ' active' : ''; ?>" href="./index.php?show=moduleslist">Liste des Modules (<?php echo count($PageOptions['ModuleNames']); ?>)</a>
             <a class="nav-link nav-item<?php echo ($_GET['show'] == "peers") ? ' active' : ''; ?>" href="./index.php?show=peers">Interlink (<?php echo $Reflector->PeerCount(); ?>)</a>
