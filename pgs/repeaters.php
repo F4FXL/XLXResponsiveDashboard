@@ -76,7 +76,7 @@
                   <?php echo $Reflector->Nodes[$i]->GetProtocol(); ?>
                </td>
                <td>
-                  <?php echo $Reflector->Nodes[$i]->GetLinkedModule(); ?>
+                  <a class="pl" href="index.php?show=users&module=<?php echo $Reflector->Nodes[$i]->GetLinkedModule(); ?>"><?php echo $Reflector->Nodes[$i]->GetLinkedModule(); ?></a>
                </td>
                <?php
                   $ipstring = "";
