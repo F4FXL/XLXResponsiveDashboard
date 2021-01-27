@@ -47,7 +47,7 @@ function ParseTime($Input) {
 
 function FormatSeconds($seconds) {
   $seconds = abs($seconds); 
-  return sprintf("%d days %02d:%02d:%02d", $seconds/60/60/24,($seconds/60/60)%24,($seconds/60)%60,$seconds%60);
+  return sprintf("%d Weeks %d days %02d:%02d:%02d", $seconds/60/60/24/7, ($seconds/60/60/24)%7,($seconds/60/60)%24,($seconds/60)%60,$seconds%60);
 } 
 
 function CreateCode ($laenge) {   
