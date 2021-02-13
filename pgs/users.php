@@ -1,42 +1,43 @@
-
 <?php $module = strtoupper($_GET['module']);
 if(!empty($module)) {?>
 
 <div class="row justify-content-md-center">
-<div class="col">
-<table class="table table-hover table-sm table-responsive-md">
-	<thead class="thead-light">
-		<tr>
-			<th>
-			<h5>
-            	<!-- <small>Utilisateurs du module : </small>  --><?php echo $PageOptions['ModuleNames'][$module] ?>
-        	</h5>
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-	</tbody>
-</table>
-</div>
+    <div class="col">
+        <table class="table table-hover table-sm table-responsive-md">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        <h5>
+                            <!-- <small>Utilisateurs du module : </small>  --><?php echo $PageOptions['ModuleNames'][$module] ?>
+                        </h5>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 </div>
 <?php } ?>
 <div class="row justify-content-md-center">
-<div class="col">
-<table class="table table-hover table-sm table-responsive-md">
-<thead>
-<tr class="table-center">   
-<th scope="row">#</th>
-<th scope="row">Flag</th>
-<th scope="row">Callsign</th>
-<th scope="row">Suffix</th>
-<th scope="row">DPRS</th>
-<th scope="row">Via / Peer</th>
-<th scope="row">Last heard</th>
-<th scope="row">Module<!-- <img src="./img/ear.png" alt="Listening on" / --></th>
-</tr>
-</thead>
-<tbody>
-<?php
+    <div class="col">
+        <table class="table table-hover table-sm table-responsive-md">
+            <thead>
+                <tr class="table-center">
+                    <th scope="row">#</th>
+                    <th scope="row">Flag</th>
+                    <th scope="row">Callsign</th>
+                    <th scope="row">Suffix</th>
+                    <th scope="row">DPRS</th>
+                    <th scope="row">Via / Peer</th>
+                    <th scope="row">Last heard</th>
+                    <th scope="row">Module
+                        <!-- <img src="./img/ear.png" alt="Listening on" / -->
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
 $Reflector->LoadFlags();
 for ($i=0;$i<$Reflector->StationCount();$i++) {
     if(empty($module) || $Reflector->Stations[$i]->GetModule() == $module)
@@ -75,14 +76,14 @@ for ($i=0;$i<$Reflector->StationCount();$i++) {
     }
 }
 
-?> 
-</tbody>
-</table>
-</div>
-<div class="col-md-4">
-<table class="table table-hover table-sm table-responsive-md">
-<thead>
-<?php 
+?>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <table class="table table-hover table-sm table-responsive-md">
+            <thead>
+                <?php 
 
 $Modules = empty($module) ? $Reflector->GetModules() : array($module);
 sort($Modules, SORT_STRING);
@@ -144,6 +145,6 @@ for ($j=0;$j<$maxNodes;$j++)
 }
 
 ?>
-</tbody>
-</table>
-</div>
+                </tbody>
+        </table>
+    </div>
