@@ -22,7 +22,7 @@ if(!empty($module)) {?>
 <div class="row justify-content-md-center">
     <div class="col">
         <table class="table table-hover table-sm table-responsive-md">
-            <thead>
+            <thead class="thead-light">
                 <tr class="table-center">
                     <th scope="row">#</th>
                     <th scope="row">Flag</th>
@@ -80,9 +80,9 @@ for ($i=0;$i<$Reflector->StationCount();$i++) {
             </tbody>
         </table>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-5">
         <table class="table table-hover table-sm table-responsive-md">
-            <thead>
+            <thead class="thead-light">
                 <?php 
 
 $Modules = empty($module) ? $Reflector->GetModules() : array($module);

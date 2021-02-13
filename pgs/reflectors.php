@@ -19,7 +19,7 @@ $Reflectors    = $XML->GetAllElements($Reflectorlist, "reflector");
 <div class="row justify-content-md-center">
     <div class="col">
         <table class="table table-hover table-sm table-responsive-md">
-            <thead>
+            <thead class="thead-light">
                 <tr class="table-center">
                     <th scope="row">#</th>
                     <th scope="row">Réflecteur</th>

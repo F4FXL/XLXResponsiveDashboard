@@ -1,7 +1,7 @@
 <div class="row justify-content-md-center">
     <div class="col">
         <table class="table table-hover table-sm table-responsive-md">
-            <thead>
+            <thead class="thead-light">
                 <tr>
                     <th scope="col">Module</th>
                     <th scope="col">Nom du Module</th>
