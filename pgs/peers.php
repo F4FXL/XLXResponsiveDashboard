@@ -19,8 +19,8 @@ fclose($Result);
 ?>
 
 <div class="row justify-content-md-center">
-   <div class="col">
-      <table class="table table-hover table-sm table-responsive-md">
+    <div class="col">
+        <table class="table table-hover table-sm table-responsive-md">
             <thead>
                 <tr>
                     <th scope="row">#</th>
@@ -37,7 +37,7 @@ fclose($Result);
                     ?>
                 </tr>
             </thead>
-<?php
+            <?php
 
 $Reflector->LoadFlags();
 
@@ -82,6 +82,6 @@ for ($i=0;$i<$Reflector->PeerCount();$i++) {
    if ($i == $PageOptions['PeerPage']['LimitTo']) { $i = $Reflector->PeerCount()+1; }
 }
 
-?> 
- 
-</table>
+?>
+
+        </table>

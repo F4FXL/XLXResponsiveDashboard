@@ -42,7 +42,10 @@ $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
         <table class="table table-hover table-sm table-responsive-md">
             <thead class="thead-light">
                 <tr>
-                    <th><h5><strong>System Info</strong></h5></th><th>&nbsp;</th>
+                    <th>
+                        <h5><strong>System Info</strong></h5>
+                    </th>
+                    <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,7 +58,7 @@ $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
                     <td><?php echo FormatSeconds(shapeSpace_server_uptime()); ?></td>
                 </tr>
                 <tr>
-                <th scope="row">System memory usage</th>
+                    <th scope="row">System memory usage</th>
                     <td><?php echo shapeSpace_server_memory_usage(); ?></td>
                 </tr>
                 <tr>
@@ -64,12 +67,15 @@ $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
                 </tr>
             </tbody>
         </table>
-   </div>
-   <div class="col-md">
+    </div>
+    <div class="col-md">
         <table class="table table-hover table-sm table-responsive-md">
             <thead class="thead-light">
                 <tr>
-                    <th><h5><strong>XLX Software Runtime Info</strong></h5></th><th>&nbsp;</th>
+                    <th>
+                        <h5><strong>XLX Software Runtime Info</strong></h5>
+                    </th>
+                    <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
@@ -95,9 +101,11 @@ $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
                 </tr>
                 <tr>
                     <th scope="row">Transcoding status</th>
-                    <td><img src="<?php echo checkProcessStatus($Service['AmbedStatusCommand']) ? "img/up.png" : "img/down.png" ?>"></td>
+                    <td><img
+                            src="<?php echo checkProcessStatus($Service['AmbedStatusCommand']) ? "img/up.png" : "img/down.png" ?>">
+                    </td>
                 </tr>
             </tbody>
         </table>
-   </div>
+    </div>
 </div>

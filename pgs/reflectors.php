@@ -17,19 +17,19 @@ $Reflectors    = $XML->GetAllElements($Reflectorlist, "reflector");
 ?>
 
 <div class="row justify-content-md-center">
-   <div class="col">
-      <table class="table table-hover table-sm table-responsive-md">
-         <thead>
-            <tr class="table-center">  
-               <th scope="row">#</th>
-               <th scope="row">Réflecteur</th>
-               <th scope="row">Pays</th>
-               <th scope="row">Etat</th>
-               <th scope="row">Infos</th>
-            </tr>
-         </thead>
-         <tbody>
-<?php
+    <div class="col">
+        <table class="table table-hover table-sm table-responsive-md">
+            <thead>
+                <tr class="table-center">
+                    <th scope="row">#</th>
+                    <th scope="row">Réflecteur</th>
+                    <th scope="row">Pays</th>
+                    <th scope="row">Etat</th>
+                    <th scope="row">Infos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
 
 for ($i=0;$i<count($Reflectors);$i++) {
    
@@ -49,9 +49,7 @@ for ($i=0;$i<count($Reflectors);$i++) {
  </tr>';
 }
 ?>
-         </tbody>
-      </table>
-   </div>
+            </tbody>
+        </table>
+    </div>
 </div>
-   
-   
