@@ -1,14 +1,23 @@
 
 <?php $module = strtoupper($_GET['module']);
 if(!empty($module)) {?>
+
 <div class="row justify-content-md-center">
-    <div class="col">
-        <div class="page-header">
-        <h5>
-            <small>Utilisateurs du module : </small><?php echo $PageOptions['ModuleNames'][$module] ?>
-        </h5>
-        </div>
-    </div>
+<div class="col">
+<table class="table table-hover table-sm table-responsive-md">
+	<thead class="thead-light">
+		<tr>
+			<th>
+			<h5>
+            	<!-- <small>Utilisateurs du module : </small>  --><?php echo $PageOptions['ModuleNames'][$module] ?>
+        	</h5>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+</div>
 </div>
 <?php } ?>
 <div class="row justify-content-md-center">
