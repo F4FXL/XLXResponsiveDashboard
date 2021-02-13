@@ -38,49 +38,66 @@ function checkProcessStatus($command)
 $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
 ?>
 <div class="row justify-content-md-center">
-    <div class="col">
-    <table class="table table-hover table-sm table-responsive-md">
-        <tbody>
-            <tr>
-                <th scope="row">Local time</th>
-                <td><?php echo date("Y-m-d H:i:s"); ?></td>
-            </tr>
-            <tr>
-                <th scope="row">System up time</th>
-                <td><?php echo FormatSeconds(shapeSpace_server_uptime()); ?></td>
-            </tr>
-            <tr>
-            <th scope="row">System memory usage</th>
-                <td><?php echo shapeSpace_server_memory_usage(); ?></td>
-            </tr>
-            <tr>
-                <th scope="row">CPU Load (avg. last minute)</th>
-                <td><?php echo round(sys_getloadavg()[0] * 100.0, 1) . "%"; ?></td>
-            </tr>
-            <tr>
-                <th scope="row">XLX Software Version</th>
-                <td><?php echo $PageOptions['xlxdVersion'] ?></td>
-            </tr>
-            <tr>
-                <th scope="row">XLX Reflector process status</th>
-                <td><img src="<?php echo ($xlxdStatus ? "img/up.png" : "img/down.png" )?>"></td>
-            </tr>
-            <tr>
-                <th scope="row">XLX Reflector up time</th>
-                <td><?php echo ($xlxdStatus ? FormatSeconds($Reflector->GetServiceUptime()) : "-"); ?></td>
-            </tr>
-            <tr>
-                <th scope="row">XLX Reflector CPU usage</th>
-                <td><?php echo ($xlxdStatus ? get_process_system_usage("xlxd")[0] . "%" : "-"); ?></td>
-            </tr>
-            <tr>
-                <th scope="row">XLX Reflector memory usage</th>
-                <td><?php echo ($xlxdStatus ? get_process_system_usage("xlxd")[1] . "%" : "-"); ?></td>
-            </tr>
-            <tr>
-                <th scope="row">XLX Reflector transcoding status</th>
-                <td><img src="<?php echo checkProcessStatus($Service['AmbedStatusCommand']) ? "img/up.png" : "img/down.png" ?>"></td>
-            </tr>
-        </tbody>
+    <div class="col-md">
+        <table class="table table-hover table-sm table-responsive-md">
+            <thead class="thead-light">
+                <tr>
+                    <th><h5><strong>System Info</strong></h5></th><th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Local time</th>
+                    <td><?php echo date("Y-m-d H:i:s"); ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">System up time</th>
+                    <td><?php echo FormatSeconds(shapeSpace_server_uptime()); ?></td>
+                </tr>
+                <tr>
+                <th scope="row">System memory usage</th>
+                    <td><?php echo shapeSpace_server_memory_usage(); ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">CPU Load (avg. last minute)</th>
+                    <td><?php echo round(sys_getloadavg()[0] * 100.0, 1) . "%"; ?></td>
+                </tr>
+            </tbody>
+        </table>
+   </div>
+   <div class="col-md">
+        <table class="table table-hover table-sm table-responsive-md">
+            <thead class="thead-light">
+                <tr>
+                    <th><h5><strong>XLX Software Runtime Info</strong></h5></th><th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Software Version</th>
+                    <td><?php echo $PageOptions['xlxdVersion'] ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">Process status</th>
+                    <td><img src="<?php echo ($xlxdStatus ? "img/up.png" : "img/down.png" )?>"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Process up time</th>
+                    <td><?php echo ($xlxdStatus ? FormatSeconds($Reflector->GetServiceUptime()) : "-"); ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">CPU usage</th>
+                    <td><?php echo ($xlxdStatus ? get_process_system_usage("xlxd")[0] . "%" : "-"); ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">Memory usage</th>
+                    <td><?php echo ($xlxdStatus ? get_process_system_usage("xlxd")[1] . "%" : "-"); ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">Transcoding status</th>
+                    <td><img src="<?php echo checkProcessStatus($Service['AmbedStatusCommand']) ? "img/up.png" : "img/down.png" ?>"></td>
+                </tr>
+            </tbody>
+        </table>
    </div>
 </div>
