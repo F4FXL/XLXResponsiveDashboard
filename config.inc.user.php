@@ -4,15 +4,12 @@
 * Commented code is provided as an exmaple
 */
 
-$PageOptions['xlxdVersion']                          = '<a href="https://github.com/F4FXL/xlxd/releases/tag/xlx208%2Fv2.4.1" target="_blank">xlx208/2.4.1</a>';	//xlxd version
-
-$PageOptions['CustomTXT']                            = 'Sysop F5KAV R.A.C.C.W';					// custom text in your header   
-$PageOptions['CustomTXTLink']                        = 'https://www.f5kav.fr/nos-installations/reflecteur-xlx208/';
+/*
 $PageOptions['LogoFile']                             = './img/logo_kav.png';
 
 $PageOptions['ModuleNames']['A']                     = 'Interlink XLX';
 $PageOptions['ModuleNames']['B']                     = 'France';
-$PageOptions['ModuleNames']['C']                     = 'DStar / <a href="http://ipsc2fr.dnsalias.net/ipsc/" target=_blank>TG867 IPSC2FR</a> / YSF';
+$PageOptions['ModuleNames']['C']                     = 'Dstar/TG20867/YSF';
 $PageOptions['ModuleNames']['D']                     = 'MMDVM TG6 DMR';
 $PageOptions['ModuleNames']['E']                     = 'Auvergne-Rhone-Alpes';
 $PageOptions['ModuleNames']['F']                     = 'Bourgogne-Franche-Comté';
@@ -32,8 +29,5 @@ $PageOptions['ModuleNames']['S']                     = 'UNARAF';
 $PageOptions['ModuleNames']['T']                     = 'Test';
 $PageOptions['ModuleNames']['W']                     = 'World Wide';
 $PageOptions['ModuleNames']['X']                     = 'Sysop';
-
-$Service['AmbedStatusCommand']                       = "";//"timeout -k 2s 2s socat -u -t1 'TCP4:10.9.0.100:6789' -";
-
-
+*/
 ?>
