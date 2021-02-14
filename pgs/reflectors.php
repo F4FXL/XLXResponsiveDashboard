@@ -40,7 +40,7 @@ for ($i=0;$i<count($Reflectors);$i++) {
    $DASHBOARDURL  = $XML->GetElement($Reflectors[$i], "dashboardurl");
    
    echo '
- <tr class="table-center">
+ <tr>
    <th scope="row">'.($i+1).'</th>
    <td><a href="'.$DASHBOARDURL.'" target="_blank" class="pl" title="Visit the Dashboard of&nbsp;'.$NAME.'">'.$NAME.'</a></td>
    <td>'.$COUNTRY.'</td>
