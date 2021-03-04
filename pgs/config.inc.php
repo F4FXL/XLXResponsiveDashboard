@@ -61,6 +61,9 @@ $PageOptions['CustomTXT']                            = 'Sysop N0CALL';					// cu
 $PageOptions['CustomTXTLink']                        = 'https://html5zombo.com/';
 $PageOptions['LogoFile']                             = './img/International_amateur_radio_symbol.png';
 
+$PageOptions['SGSRepeaterReplace'] = array();
+//$PageOptions['SGSRepeaterReplace']['N0CALL  B']      = 'MYSGS';
+
 $Service['PIDFile']                                  = '/var/log/xlxd.pid';
 $Service['XMLFile']                                  = '/var/log/xlxd.xml';
 $Service['AmbedStatusCommand']                       = 'pgrep ambed';
@@ -81,6 +84,10 @@ $VNStat['Interfaces']                                = array();
 $VNStat['Interfaces'][0]['Name']                     = 'venet0';
 $VNStat['Interfaces'][0]['Address']                  = 'venet0';
 $VNStat['Binary']                                    = '/usr/bin/vnstat';
+
+
+
+
 /*
   include an extra config file for people who dont like to mess with shipped config.ing.php
   this makes updating dashboard from git a little bit easier
