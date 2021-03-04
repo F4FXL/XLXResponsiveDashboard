@@ -1,28 +1,17 @@
-<?php $module = strtoupper($_GET['module']);
-if(!empty($module)) {?>
-
 <div class="row justify-content-md-center">
     <div class="col">
         <table class="table table-hover table-sm table-responsive-md">
             <thead class="thead-light">
+            <?php $module = strtoupper($_GET['module']);
+            if(!empty($module)) {?>
                 <tr>
-                    <th>
+                    <th colspan="8">
                         <h5>
                             <!-- <small>Utilisateurs du module : </small>  --><?php echo $PageOptions['ModuleNames'][$module] ?>
                         </h5>
                     </th>
                 </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
-</div>
-<?php } ?>
-<div class="row justify-content-md-center">
-    <div class="col">
-        <table class="table table-hover table-sm table-responsive-md">
-            <thead class="thead-light">
+                <?php } ?>
                 <tr class="table-center">
                     <th scope="row">#</th>
                     <th scope="row">Flag</th>
@@ -31,9 +20,7 @@ if(!empty($module)) {?>
                     <th scope="row">DPRS</th>
                     <th scope="row">Via / Peer</th>
                     <th scope="row">Last heard</th>
-                    <th scope="row">Module
-                        <!-- <img src="./img/ear.png" alt="Listening on" / -->
-                    </th>
+                    <th scope="row">Module</th>
                 </tr>
             </thead>
             <tbody>
