@@ -124,7 +124,7 @@ if ($LastSync < (time() - $CallingHome['PushDelay'])) { $Ressource=@fopen($Calli
         echo '
       }';
 
-        if (!isset($_GET['show']) || (($_GET['show'] != 'liveircddb') && ($_GET['show'] != 'reflectors') && ($_GET['show'] != 'interlinks'))) {
+        if (!isset($_GET['show']) || (($_GET['show'] != 'liveircddb') && ($_GET['show'] != 'reflectors') && ($_GET['show'] != 'interlinks') && ($_GET['show'] != 'sysinfo'))) {
             echo '
       PageRefresh = setTimeout(ReloadPage, ' . $PageOptions[$_GET['show'] != 'sgs' ? 'PageRefreshDelay' : 'PageRefreshAlt'] . ');';
         }
