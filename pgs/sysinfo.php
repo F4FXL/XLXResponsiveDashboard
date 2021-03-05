@@ -35,6 +35,12 @@ function checkProcessStatus($command)
     return $out != "";
 }
 
+function getGitVersion()
+{
+    $gitver = exec('git rev-parse HEAD');
+    return $gitver;
+}
+
 $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
 ?>
 <div class="row justify-content-md-center">
@@ -42,10 +48,9 @@ $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
         <table class="table table-hover table-sm table-responsive-md">
             <thead class="thead-light">
                 <tr>
-                    <th>
+                    <th scope="col" colspan="2">
                         <h5><strong>System Info</strong></h5>
                     </th>
-                    <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
@@ -72,10 +77,9 @@ $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
         <table class="table table-hover table-sm table-responsive-md">
             <thead class="thead-light">
                 <tr>
-                    <th>
+                    <th scope="col" colspan="2">
                         <h5><strong>XLX Software Runtime Info</strong></h5>
                     </th>
-                    <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
@@ -104,6 +108,35 @@ $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
                     <td><img
                             src="<?php echo checkProcessStatus($Service['AmbedStatusCommand']) ? "img/up.png" : "img/down.png" ?>">
                     </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md">
+        <table class="table table-hover table-sm table-responsive-md">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="row" colspan="2">
+                        <h5><strong>Dashboard Info</strong></h5>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Git Version</th>
+                    <td><?php echo getGitVersion(); ?></td>
+                </tr>
+                <tr>
+                    <th scope="row" rowspan="4">Credits</th>
+                </tr>
+                <tr>
+                    <td>Developed by F4FXL</td>
+                </tr>
+                <tr>
+                    <td>Based on <a target="_blank" href="https://github.com/LX3JL/xlxd/tree/master/dashboard">XLX Dashboard</a> by LX1IQ</td>
+                </tr>
+                <tr>
+                    <td>Based on <a target="_blank" href="https://github.com/K2IE/sgsheard/">SGS Heard</a> by K2IE</td>
                 </tr>
             </tbody>
         </table>
