@@ -44,7 +44,7 @@ function getGitVersion()
 $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
 ?>
 <div class="row justify-content-md-center">
-    <div class="col-md">
+    <div class="col">
         <table class="table table-hover table-sm table-responsive-md">
             <thead class="thead-light">
                 <tr>
@@ -73,7 +73,7 @@ $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
             </tbody>
         </table>
     </div>
-    <div class="col-md">
+    <div class="col">
         <table class="table table-hover table-sm table-responsive-md">
             <thead class="thead-light">
                 <tr>
@@ -112,7 +112,7 @@ $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
             </tbody>
         </table>
     </div>
-    <div class="col-md">
+    <div class="col">
         <table class="table table-hover table-sm table-responsive-md">
             <thead class="thead-light">
                 <tr>
