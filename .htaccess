@@ -1,0 +1,23 @@
+RewriteEngine on
+RewriteBase /
+
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteCond %{QUERY_STRING} show=(.*) [NC]
+RewriteRule ^index.php /%1? [L,R=301]
+
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteCond %{QUERY_STRING} show=(\w+)&module=(\w+)  
+RewriteRule ^index.php /%1/%2? [L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^/[^/]+/?$
+RewriteRule ^([^/]*)/?$ index.php?show=$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} /.*/.*
+RewriteRule ^([^/]*)/([^/]*)$ index.php?show=$1&module=$2 [L]
+
+
+
