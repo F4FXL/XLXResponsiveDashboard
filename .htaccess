@@ -15,7 +15,7 @@ RewriteRule ^index.php /%1/%2? [L,R=301,QSD]
 
 # kick trailing slash
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)/$ /$1 [L,R] # <- for test, for prod use [L,R=301]
+RewriteRule ^(.*)/$ /$1 [L,R=301]
 
 # forward pretty URL to parameters
 RewriteCond %{REQUEST_FILENAME} !-f
