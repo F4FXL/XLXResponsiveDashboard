@@ -1,23 +1,26 @@
+ExpiresActive On
+ExpiresDefault "access plus 5 secondes"
+
 RewriteEngine on
 RewriteBase /
 
+# Redirect ugly URLs to nice ones
 RewriteCond %{ENV:REDIRECT_STATUS} ^$
-RewriteCond %{QUERY_STRING} show=(.*) [NC]
-RewriteRule ^index.php /%1? [L,R=301]
+RewriteCond %{QUERY_STRING} ^show=([a-zA-Z]*)$ [NC]
+RewriteRule ^index.php /%1? [L,R=301,QSD]
 
 RewriteCond %{ENV:REDIRECT_STATUS} ^$
-RewriteCond %{QUERY_STRING} show=(\w+)&module=(\w+)  
-RewriteRule ^index.php /%1/%2? [L,R=301]
+RewriteCond %{QUERY_STRING} ^show=([a-zA-Z]*)\&module=([a-zA-Z]*)$
+RewriteRule ^index.php /%1/%2? [L,R=301,QSD]
 
+# kick trailing slash
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R] # <- for test, for prod use [L,R=301]
+
+# forward pretty URL to parameters
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} ^/[^/]+/?$
-RewriteRule ^([^/]*)/?$ index.php?show=$1 [L]
+RewriteRule ^([a-zA-Z]*)/([a-zA-Z]*)$ ./index.php?shwo=$1&module=$2
+RewriteRule ^([a-zA-Z]*)$ ./index.php?show=$1
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} /.*/.*
-RewriteRule ^([^/]*)/([^/]*)$ index.php?show=$1&module=$2 [L]
-
-
-
+FallbackResource /index.php
