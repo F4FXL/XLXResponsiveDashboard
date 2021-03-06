@@ -20,7 +20,7 @@ RewriteRule ^(.*)/$ /$1 [L,R] # <- for test, for prod use [L,R=301]
 # forward pretty URL to parameters
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([a-zA-Z]*)/([a-zA-Z]*)$ ./index.php?shwo=$1&module=$2
+RewriteRule ^([a-zA-Z]*)/([a-zA-Z]*)$ ./index.php?show=$1&module=$2
 RewriteRule ^([a-zA-Z]*)$ ./index.php?show=$1
 
 FallbackResource /index.php
