@@ -1,18 +1,3 @@
-<?php
-function getSGS($peer)
-{
-    global $PageOptions;
-
-    if(isset($PageOptions['SGSRepeaterReplace'][$peer]))
-    {
-        return $PageOptions['SGSRepeaterReplace'][$peer];
-    }
-
-    return $peer;
-}
-
-?>
-
 <div class="row justify-content-md-center">
     <div class="col">
         <table class="table table-hover table-sm table-responsive-md">
@@ -121,7 +106,7 @@ foreach($Modules as $module)
     $nodesGroupedByModules[$module] = array();
     foreach($nodesInModule as $nodeId)
     {
-        $nodesGroupedByModules[$module][] = $Reflector->GetCallsignAndSuffixByID($nodeId); 
+        $nodesGroupedByModules[$module][] = getSGS($Reflector->GetCallsignAndSuffixByID($nodeId)); 
     }
     sort($nodesGroupedByModules[$module], SORT_STRING); 
 }

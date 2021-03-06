@@ -60,4 +60,16 @@ function CreateCode ($laenge) {
 	return $out;  
 }
 
+function getSGS($peer)
+{
+    global $PageOptions;
+
+    if(isset($PageOptions['SGSRepeaterReplace'][$peer]))
+    {
+        return $PageOptions['SGSRepeaterReplace'][$peer];
+    }
+
+    return $peer;
+}
+
 ?>

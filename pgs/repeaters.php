@@ -43,7 +43,7 @@
                   $callsignWithSuffix = $callsignWithSuffix . ($suffix != ""? "-" . $suffix : "");
                   ?>
                         <a href="https://www.aprsdirect.com/details/main/name/<?php echo $callsignWithSuffix;?>"
-                            target="_blank"><?php echo $callsignWithSuffix;?></a>
+                            target="_blank"><?php echo getSGS($callsignWithSuffix);?></a>
                     </td>
                     <?php
                   $band = "";
