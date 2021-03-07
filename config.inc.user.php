@@ -40,9 +40,9 @@ $PageOptions['SGS']['Show']                          = true;         // Show SGS
 $PageOptions['SGSTitle']                             = 'STN208 Smart Groups Status';
 $PageOptions['SGSServer']	                         = 'stn208'; //sgsremote <servername> as in sgsremote config
 $PageOptions['PageRefreshAlt']                       = '60000';      // Alternate page refresh time in miliseconds
-$PageOptions['SGSRepeaterReplace']['F1ZNZ   A']        = 'STN208 B';
-$PageOptions['SGSRepeaterReplace']['F1ZNZ   C']        = 'STN208 C';
-$PageOptions['SGSRepeaterReplace']['F1ZNZ   D']        = 'STN208 D';
+$PageOptions['SGSRepeaterReplace']['F1ZNZ-A']        = 'STN208-B';
+$PageOptions['SGSRepeaterReplace']['F1ZNZ-C']        = 'STN208-C';
+$PageOptions['SGSRepeaterReplace']['F1ZNZ-D']        = 'STN208-D';
 
 
 $Service['AmbedStatusCommand']                       = "timeout -k 2s 2s socat -u -t1 'TCP4:10.9.0.100:6789' -";
