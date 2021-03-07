@@ -74,11 +74,14 @@ function getSGS($peer)
 
 function formatCallForAPRS($call)
 {
-   return str_replace(" ", "-", preg_replace("/(\s)\\1+/", "$1", $call));
+   $call = str_replace("&nbsp;", " ", $call);
+   $call = str_replace(" ", "-", preg_replace("/(\s)\\1+/", "$1", $call));
+   return $call;
 }
 
-function formatCall($call, $suffix)
+function formatCall($call, $suffix = "")
 {
-   return str_pad($call, 8, " ") . $suffix;
+   $call = str_pad($call, 8, " ") . $suffix;
+   return str_replace(" ", "&nbsp;", $call);
 }
 ?>
