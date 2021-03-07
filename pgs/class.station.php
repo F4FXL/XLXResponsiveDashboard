@@ -28,7 +28,7 @@ class Station {
    }
  
    public function GetCallsign()             { return $this->Callsign;       }
-   public function GetVIA()                  { return str_replace(" ", "-", preg_replace("/(\s)\\1+/", "$1", $this->Via));}
+   public function GetVIA()                  { return $this->Via;            }
    public function GetPeer()                 { return $this->Peer;           }
    public function GetLastHeardTime()        { return $this->LastHeardTime;  }
    public function GetSuffix()               { return $this->Suffix;         }

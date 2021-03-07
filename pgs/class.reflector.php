@@ -239,7 +239,7 @@ class xReflector {
       $i        = 0;
       while ($i < $this->NodeCount()) {
          if ($this->Nodes[$i]->GetRandomID() == $RandomId) {
-            return $this->Nodes[$i]->GetCallSign().'-'.$this->Nodes[$i]->GetSuffix();
+            return str_pad($this->Nodes[$i]->GetCallSign(), 8, " ") . $this->Nodes[$i]->GetSuffix();
          }
          $i++;
       }

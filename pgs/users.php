@@ -120,7 +120,7 @@ for ($j=0;$j<$maxNodes;$j++)
         if($j < count($nodesInModule))
         {
             echo '<td>';
-            echo '<a href="https://www.aprsdirect.com/details/main/name/' . $nodesInModule[$j] . '" class="pl" target="_blank">'. $nodesInModule[$j] .'</a>';
+            echo '<a href="https://www.aprsdirect.com/details/main/name/' . formatCallForAPRS($nodesInModule[$j]) . '" class="pl" target="_blank">'. $nodesInModule[$j] .'</a>';
             echo '</td>';
         }
         else

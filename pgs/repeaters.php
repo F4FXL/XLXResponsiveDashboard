@@ -40,7 +40,7 @@
                         <?php               
                   $suffix = $Reflector->Nodes[$i]->GetSuffix();
                   $callsignWithSuffix = $Reflector->Nodes[$i]->GetCallSign();
-                  $callsignWithSuffix = $callsignWithSuffix . ($suffix != ""? "-" . $suffix : "");
+                  $callsignWithSuffix = formatCall($callsignWithSuffix, $suffix);
                   ?>
                         <a href="https://www.aprsdirect.com/details/main/name/<?php echo $callsignWithSuffix;?>"
                             target="_blank"><?php echo getSGS($callsignWithSuffix);?></a>

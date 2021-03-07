@@ -72,4 +72,13 @@ function getSGS($peer)
     return $peer;
 }
 
+function formatCallForAPRS($call)
+{
+   return str_replace(" ", "-", preg_replace("/(\s)\\1+/", "$1", $call));
+}
+
+function formatCall($call, $suffix)
+{
+   return str_pad($call, 8, " ") . $suffix;
+}
 ?>
