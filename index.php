@@ -125,17 +125,15 @@ if ($CallingHome['Active']) {
                     
                 xhr.onreadystatechange = function() {
                     if(xhr.readyState == 4 && xhr.status == 200) {
-                    
                         document.getElementById('dashboard-content').innerHTML = xhr.responseText;
-                    
                     }
                 }
                 xhr.send(null);
 
-                PageRefresh = setTimeout(reloadDashboard, 10);
+                PageRefresh = setTimeout(reloadDashboard, 5000);
             }
 
-            PageRefresh = setTimeout(reloadDashboard, 10);
+            reloadDashboard();
 
         </script>
         <?php
