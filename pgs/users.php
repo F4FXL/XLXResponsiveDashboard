@@ -110,7 +110,7 @@ for ($i=0;$i<$Reflector->StationCount();$i++) {
         <td>';
         
         list ($Flag, $Name) = $Reflector->GetFlag($Reflector->Stations[$i]->GetCallSign());
-        if (file_exists("./img/flags/".$Flag.".png"))
+        if (file_exists("../img/flags/".$Flag.".png"))
         {
             echo '<a href="#" data-toggle="tooltip" title="'. $Name . '"><img src="./img/flags/'.$Flag.'.png" class="table-flag" alt="'.$Name.'"></a>';
         }
