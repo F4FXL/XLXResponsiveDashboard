@@ -9,7 +9,7 @@
 if (file_exists("./pgs/functions.php")) {
     require_once("./pgs/functions.php");
 } else {
-    die("functions.php does not exist.");
+    die("functions.php does not exist. I");
 }
 if (file_exists("./pgs/config.inc.php")) {
     require_once("./pgs/config.inc.php");
@@ -43,14 +43,16 @@ if ($CallingHome['Active']) {
             @fwrite($Ressource, "\n" . '$LastSync = 0;');
             @fwrite($Ressource, "\n" . '$Hash     = "' . $Hash . '";');
             @fwrite($Ressource, "\n\n" . '?>');
-@fclose($Ressource);
-@exec("chmod 777 " . $CallingHome['HashFile']);
-$CallHomeNow = true;
-}
-} else {
-include($CallingHome['HashFile']);
-if ($LastSync < (time() - $CallingHome['PushDelay'])) { $Ressource=@fopen($CallingHome['HashFile'], "w" ); if
-    ($Ressource) { @fwrite($Ressource, "<?php\n");
+            @fclose($Ressource);
+            @exec("chmod 777 " . $CallingHome['HashFile']);
+            $CallHomeNow = true;
+        }
+    } else {
+        include($CallingHome['HashFile']);
+        if ($LastSync < (time() - $CallingHome['PushDelay'])) { $Ressource=@fopen($CallingHome['HashFile'], "w" );
+            if($Ressource)
+            {
+                @fwrite($Ressource, "<?php\n");
                 @fwrite($Ressource, "\n" . '$LastSync = ' . time() . ';');
                 @fwrite($Ressource, "\n" . '$Hash     = "' . $Hash . '";');
                 @fwrite($Ressource, "\n\n" . '?>');
@@ -104,8 +106,40 @@ if ($LastSync < (time() - $CallingHome['PushDelay'])) { $Ressource=@fopen($Calli
             }
         }
         </style>
-        <?php
+        <script language="JavaScript">
+            var PageRefresh;
 
+            function reloadDashboard()
+            {
+                var xhr=null;
+    
+                if (window.XMLHttpRequest) {
+                    xhr = new XMLHttpRequest();
+                }
+                else if (window.ActiveXObject)
+                {
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                    
+                xhr.open("GET", "pgs/users.php?module=<?php echo urlencode($_GET['module']); ?>", true);
+                    
+                xhr.onreadystatechange = function() {
+                    if(xhr.readyState == 4 && xhr.status == 200) {
+                    
+                        document.getElementById('dashboard-content').innerHTML = xhr.responseText;
+                    
+                    }
+                }
+                xhr.send(null);
+
+                PageRefresh = setTimeout(reloadDashboard, 10);
+            }
+
+            PageRefresh = setTimeout(reloadDashboard, 10);
+
+        </script>
+        <?php
+/*
     if ($PageOptions['PageRefreshActive']) {
         echo '
    <script>
@@ -137,7 +171,7 @@ if ($LastSync < (time() - $CallingHome['PushDelay'])) { $Ressource=@fopen($Calli
       }
    </script>';
     }
-    if (!isset($_GET['show'])) $_GET['show'] = "";
+    if (!isset($_GET['show'])) $_GET['show'] = "";*/
     ?>
     </head>
 
@@ -183,7 +217,7 @@ if ($LastSync < (time() - $CallingHome['PushDelay'])) { $Ressource=@fopen($Calli
             </div>
         </nav>
 
-        <div class="container-fluid">
+        <div class="container-fluid" id="dashboard-content">
             <?php
             if ($CallingHome['Active']) {
                 if (!is_readable($CallingHome['HashFile']) && (!is_writeable($CallingHome['HashFile']))) {
