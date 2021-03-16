@@ -239,7 +239,9 @@ function getRefreshTimeout()
             }
             ?>
         <div class="container-fluid" id="dashboard-content">
-            <h5>Loading ...</h5>
+            <div class="row justify-content-md-left">
+                <h5>Loading ...</h5>
+            </div>
         </div>
 
         <footer class="footer">
