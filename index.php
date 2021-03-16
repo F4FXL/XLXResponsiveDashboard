@@ -72,6 +72,32 @@ if ($CallingHome['Active']) {
 } else {
     $Hash = "";
 }
+
+function getContentHandler()
+{
+    switch ($_GET["show"]) {
+        case 'users'      :
+            return "pgs/users.php?module=" . $_GET["module"];
+        case 'repeaters'  :
+            return "pgs/repeaters.php?module=" . $_GET["module"];
+        case 'liveircddb' :
+            return "pgs/liveircddb.php?module=" . $_GET["module"];
+        case 'peers'      :
+            return "pgs/peers.php?module=" . $_GET["module"];
+        case 'reflectors' :
+            return "pgs/reflectors.php?module=" . $_GET["module"];
+        case 'moduleslist' :
+            return "pgs/moduleslist.php?module=" . $_GET["module"];
+        case 'sysinfo' :
+            return "pgs/sysinfo.php?module=" . $_GET["module"];
+        case 'sgs' :
+            return "pgs/sgs.php?module=" . $_GET["module"];
+        default           :
+            return "pgs/users.php?module=" . $_GET["module"];
+    }
+
+    return "bla";
+}
 ?>
 <!DOCTYPE html>
 <html lang=" en">
@@ -121,7 +147,7 @@ if ($CallingHome['Active']) {
                     xhr = new ActiveXObject("Microsoft.XMLHTTP");
                 }
                     
-                xhr.open("GET", "pgs/users.php?module=<?php echo urlencode($_GET['module']); ?>", true);
+                xhr.open("GET", "<?php echo getContentHandler(); ?>&c=" + Date.now(), true);
                     
                 xhr.onreadystatechange = function() {
                     if(xhr.readyState == 4 && xhr.status == 200) {
@@ -132,9 +158,6 @@ if ($CallingHome['Active']) {
 
                 PageRefresh = setTimeout(reloadDashboard, 5000);
             }
-
-            reloadDashboard();
-
         </script>
         <?php
 /*
@@ -173,7 +196,7 @@ if ($CallingHome['Active']) {
     ?>
     </head>
 
-    <body>
+    <body onload="reloadDashboard()">
         <?php if (file_exists("./tracking.php")) {
     include_once("tracking.php");
 } ?>
@@ -214,9 +237,7 @@ if ($CallingHome['Active']) {
                 </div>
             </div>
         </nav>
-
-        <div class="container-fluid" id="dashboard-content">
-            <?php
+        <?php
             if ($CallingHome['Active']) {
                 if (!is_readable($CallingHome['HashFile']) && (!is_writeable($CallingHome['HashFile']))) {
                     echo '
@@ -225,37 +246,9 @@ if ($CallingHome['Active']) {
                     </div>';
                 }
             }
-
-            switch ($_GET['show']) {
-                case 'users'      :
-                    require_once("./pgs/users.php");
-                    break;
-                case 'repeaters'  :
-                    require_once("./pgs/repeaters.php");
-                    break;
-                // case 'liveircddb' :
-                //     require_once("./pgs/liveircddb.php");
-                //     break;
-                case 'peers'      :
-                    require_once("./pgs/peers.php");
-                    break;
-                case 'reflectors' :
-                    require_once("./pgs/reflectors.php");
-                    break;
-                case 'moduleslist' :
-                    require_once("./pgs/moduleslist.php");
-                    break;
-                case 'sysinfo' :
-                    require_once("./pgs/sysinfo.php");
-                    break;
-                case 'sgs' :
-                    require_once("./pgs/sgs.php");
-                    break;
-                default           :
-                    require_once("./pgs/users.php");
-            }
-
             ?>
+        <div class="container-fluid" id="dashboard-content">
+            <h5>Loading ...</h5>
         </div>
 
         <footer class="footer">
