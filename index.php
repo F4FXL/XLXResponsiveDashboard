@@ -185,41 +185,6 @@ function getRefreshTimeout()
                 ?>
             }
         </script>
-        <?php
-/*
-    if ($PageOptions['PageRefreshActive']) {
-        echo '
-   <script>
-      var PageRefresh;
-
-      function ReloadPage() {';
-        if (($_SERVER['REQUEST_METHOD'] === 'POST') || isset($_GET['do'])) {
-          echo '
-         document.location.href = "./index.php';
-          if (isset($_GET['show'])) {
-            echo '?show=' . $_GET['show'];
-          }
-          echo '";';
-        } else {
-          echo '
-         document.location.reload();';
-        }
-        echo '
-      }';
-
-        if (!isset($_GET['show']) || (($_GET['show'] != 'liveircddb') && ($_GET['show'] != 'reflectors') && ($_GET['show'] != 'interlinks') && ($_GET['show'] != 'sysinfo'))) {
-            echo '
-      PageRefresh = setTimeout(ReloadPage, ' . $PageOptions[$_GET['show'] != 'sgs' ? 'PageRefreshDelay' : 'PageRefreshAlt'] . ');';
-        }
-        echo '
-
-      function SuspendPageRefresh() {
-        clearTimeout(PageRefresh);
-      }
-   </script>';
-    }
-    if (!isset($_GET['show'])) $_GET['show'] = "";*/
-    ?>
     </head>
 
     <body onload="reloadDashboard()">
