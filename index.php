@@ -98,6 +98,31 @@ function getContentHandler()
 
     return "bla";
 }
+
+function getRefreshTimeout()
+{
+    global $PageOptions;
+    switch ($_GET["show"]) {
+        case 'users'      :
+            return $PageOptions['PageRefreshDelay'];
+        case 'repeaters'  :
+            return $PageOptions['PageRefreshDelay'];
+        case 'liveircddb' :
+            return $PageOptions['PageRefreshDelay'];
+        case 'peers'      :
+            return $PageOptions['PageRefreshDelay'];
+        case 'reflectors' :
+            return null;
+        case 'moduleslist' :
+            return null;
+        case 'sysinfo' :
+            return $PageOptions['PageRefreshDelay'];
+        case 'sgs' :
+            return $PageOptions['PageRefreshAlt'];
+        default           :
+            return null;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang=" en">
@@ -133,8 +158,6 @@ function getContentHandler()
         }
         </style>
         <script language="JavaScript">
-            var PageRefresh;
-
             function reloadDashboard()
             {
                 var xhr=null;
@@ -147,7 +170,7 @@ function getContentHandler()
                     xhr = new ActiveXObject("Microsoft.XMLHTTP");
                 }
                     
-                xhr.open("GET", "<?php echo getContentHandler(); ?>&c=" + Date.now(), true);
+                xhr.open("GET", "<?php echo getContentHandler(); ?>&nocache=" + Date.now(), true);
                     
                 xhr.onreadystatechange = function() {
                     if(xhr.readyState == 4 && xhr.status == 200) {
@@ -155,8 +178,11 @@ function getContentHandler()
                     }
                 }
                 xhr.send(null);
-
-                PageRefresh = setTimeout(reloadDashboard, 5000);
+                <?php
+                $timeout = getRefreshTimeout();
+                if(isset($timeout))
+                    echo "PageRefresh = setTimeout(reloadDashboard, " . $timeout . ");\n";
+                ?>
             }
         </script>
         <?php
