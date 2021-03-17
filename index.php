@@ -118,7 +118,7 @@ function getRefreshTimeout()
         case 'sgs' :
             return $PageOptions['PageRefreshAlt'];
         default           :
-            return $PageOptions['PageRefreshDelay'];;
+            return $PageOptions['PageRefreshDelay'];
     }
 }
 ?>
