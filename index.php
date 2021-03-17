@@ -183,13 +183,10 @@ function getRefreshTimeout()
                 ?>
             }
         </script>
+        <?php if (file_exists("./tracking.php")) include_once("tracking.php"); else echo "blah";?>
     </head>
 
     <body onload="reloadDashboard()">
-        <?php if (file_exists("./tracking.php")) {
-    include_once("tracking.php");
-} ?>
-
         <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <div class="media border-right mr-3 pr-0">
                 <img class="m-0 p-0" style="height:75px;" src="<?php echo $PageOptions['LogoFile']; ?>">
