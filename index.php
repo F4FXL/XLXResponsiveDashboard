@@ -155,38 +155,10 @@ function getRefreshTimeout()
             }
         }
         </style>
-        <script language="JavaScript">
-            function reloadDashboard()
-            {
-                var xhr=null;
-    
-                if (window.XMLHttpRequest) {
-                    xhr = new XMLHttpRequest();
-                }
-                else if (window.ActiveXObject)
-                {
-                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                    
-                xhr.open("GET", "<?php echo getContentHandler(); ?>&nocache=" + Date.now(), true);
-                    
-                xhr.onreadystatechange = function() {
-                    if(xhr.readyState == 4 && xhr.status == 200) {
-                        document.getElementById('dashboard-content').innerHTML = xhr.responseText;
-                    }
-                }
-                xhr.send(null);
-                <?php
-                $timeout = getRefreshTimeout();
-                if(isset($timeout))
-                    echo "PageRefresh = setTimeout(reloadDashboard, " . $timeout . ");\n";
-                ?>
-            }
-        </script>
         <?php if (file_exists("./tracking.php")) include_once("tracking.php"); else echo "blah";?>
     </head>
 
-    <body onload="reloadDashboard()">
+    <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <div class="media border-right mr-3 pr-0">
                 <img class="m-0 p-0" style="height:75px;" src="<?php echo $PageOptions['LogoFile']; ?>">
@@ -233,11 +205,11 @@ function getRefreshTimeout()
                 }
             }
             ?>
-        <div class="container-fluid" id="dashboard-content">
-            <div class="row justify-content-md-left">
-                <h5>Loading ...</h5>
-            </div>
-        </div>
+			<div class="container-fluid" id="dashboard-content">
+				<div class="row justify-content-md-left">
+					<h5>Loading ...</h5>
+				</div>
+			</div>
 
         <footer class="footer">
             <div class="container">
@@ -249,14 +221,46 @@ function getRefreshTimeout()
 
         <!-- Bootstrap core JavaScript
     ================================================== -->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-        </script>
+        </script> -->
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
         </script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+		<script language="JavaScript">
+            function reloadDashboard()
+            {
+				$("#dashboard-content").load("<?php echo getContentHandler(); ?>&nocache=" + Date.now());
+                /*var xhr=null;
+    
+                if (window.XMLHttpRequest) {
+                    xhr = new XMLHttpRequest();
+                }
+                else if (window.ActiveXObject)
+                {
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                    
+                xhr.open("GET", "<?php echo getContentHandler(); ?>&nocache=" + Date.now(), true);
+                    
+                xhr.onreadystatechange = function() {
+                    if(xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById('dashboard-content').innerHTML = xhr.responseText;
+                    }
+                }
+                xhr.send(null);*/
+                <?php
+                $timeout = getRefreshTimeout();
+                if(isset($timeout))
+                    echo "setTimeout(reloadDashboard, " . $timeout . ");\n";
+                ?>
+            }
+			
+			reloadDashboard();
         </script>
     </body>
 
