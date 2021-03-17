@@ -95,8 +95,6 @@ function getContentHandler()
         default           :
             return "pgs/users.php?module=" . $_GET["module"];
     }
-
-    return "bla";
 }
 
 function getRefreshTimeout()
@@ -120,7 +118,7 @@ function getRefreshTimeout()
         case 'sgs' :
             return $PageOptions['PageRefreshAlt'];
         default           :
-            return null;
+            return $PageOptions['PageRefreshDelay'];;
     }
 }
 ?>
