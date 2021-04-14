@@ -68,6 +68,7 @@ $Service['PIDFile']                                  = '/var/log/xlxd.pid';
 $Service['XMLFile']                                  = '/var/log/xlxd.xml';
 $Service['AmbedStatusCommand']                       = 'pgrep ambed';
 $Service['xlxdStatusCommand']                        = 'pgrep xlxd';
+$Service['sgsStatusCommand']                         = 'pgrep sgs-xl';
 
 $CallingHome['Active']                               = true;					               // xlx phone home, true or false
 $CallingHome['MyDashBoardURL']                       = 'http://xlx208.f5kav.fr';			       // dashboard url

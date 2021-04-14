@@ -43,7 +43,14 @@ function getGitVersion()
     return $gitver;
 }
 
+function getProcessUptime($processName)
+{
+    $uptime = exec('ps -p `pidof ' . $processName .  '` -o etimes | tail -n 1');
+    return $uptime;
+}
+
 $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
+$sgsStatus  = checkProcessStatus($Service['sgsStatusCommand']);
 ?>
 <div class="row justify-content-md-center">
     <div class="col">
@@ -114,6 +121,41 @@ $xlxdStatus = checkProcessStatus($Service['xlxdStatusCommand']);
             </tbody>
         </table>
     </div>
+    <?php if($PageOptions['SGS']['Show']) { ?>
+    <div class="col">
+        <table class="table table-hover table-sm table-responsive-md">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col" colspan="2">
+                        <h5><strong>Smart Group Software Runtime Info</strong></h5>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Software Version</th>
+                    <td><?php echo $PageOptions['SGS']['version'] ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">Process status</th>
+                    <td><img src="<?php echo ($sgsStatus ? "img/up.png" : "img/down.png" )?>"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Process up time</th>
+                    <td><?php echo ($sgsStatus ? FormatSeconds(getProcessUptime("sgs-xl")) : "-"); ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">CPU usage</th>
+                    <td><?php echo ($sgsStatus ? get_process_system_usage("sgs-xl")[0] . "%" : "-"); ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">Memory usage</th>
+                    <td><?php echo ($sgsStatus ? get_process_system_usage("sgs-xl")[1] . "%" : "-"); ?></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <?php } ?>
     <div class="col">
         <table class="table table-hover table-sm table-responsive-md">
             <thead class="thead-light">
