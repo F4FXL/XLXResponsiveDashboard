@@ -155,7 +155,7 @@ function getRefreshTimeout()
             }
         }
         </style>
-        <?php if (file_exists("./tracking.php")) include_once("tracking.php"); else echo "blah";?>
+        <?php if (file_exists("./tracking.php")) include_once("tracking.php"); ?>
     </head>
 
     <body>
@@ -163,7 +163,7 @@ function getRefreshTimeout()
             <div class="media border-right mr-3 pr-0">
                 <img class="m-0 p-0" style="height:75px;" src="<?php echo $PageOptions['LogoFile']; ?>">
                 <div class="media-body text-center">
-                    <p class="navbar-brand h1 mt-0 mb-0 ml-3 mr-3"><?php echo $Reflector->GetReflectorName(); ?></p>
+                    <p class="navbar-brand h1 mt-0 mb-0 ml-3 mr-3"><?php echo $Reflector->GetReflectorName(); echo isset($PageOptions['SGS']['name']) ? "<br>" . $PageOptions['SGS']['name'] : ""; ?></p>
                     <p class="border-top pt-1 mt-0 mb-0 ml-3 mr-3"><small><a target="_blank"
                                 href="<?php echo $PageOptions['CustomTXTLink']; ?>"><?php echo $PageOptions['CustomTXT'];?></a></small>
                     </p>
