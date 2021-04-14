@@ -61,8 +61,8 @@ $PageOptions['CustomTXT']                            = 'Sysop N0CALL';					// cu
 $PageOptions['CustomTXTLink']                        = 'https://html5zombo.com/';
 $PageOptions['LogoFile']                             = './img/International_amateur_radio_symbol.png';
 
-$PageOptions['SGSRepeaterReplace'] = array();
-//$PageOptions['SGSRepeaterReplace']['N0CALL  B']      = 'MYSGS';
+$PageOptions['RepeaterAlias'] = array();
+//$PageOptions['RepeaterAlias']['N0CALL  B']      = 'MYSGS';
 
 $Service['PIDFile']                                  = '/var/log/xlxd.pid';
 $Service['XMLFile']                                  = '/var/log/xlxd.xml';

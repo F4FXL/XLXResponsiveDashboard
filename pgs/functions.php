@@ -64,9 +64,9 @@ function getSGS($peer)
 {
     global $PageOptions;
 
-    if(isset($PageOptions['SGSRepeaterReplace'][$peer]))
+    if(isset($PageOptions['RepeaterAlias'][$peer]))
     {
-        return $PageOptions['SGSRepeaterReplace'][$peer];
+        return $PageOptions['RepeaterAlias'][$peer];
     }
 
     return $peer;

@@ -206,7 +206,7 @@ function getRefreshTimeout()
             }
             ?>
 			<div class="container-fluid" id="dashboard-content">
-				<div class="row justify-content-md-left">
+				<div class="row justify-content-md-left" id="place-holder">
 					<h5>Loading ...</h5>
 				</div>
 			</div>
@@ -231,12 +231,28 @@ function getRefreshTimeout()
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
         </script>
-		<script language="JavaScript">
+        <script language="javascript">
             function reloadDashboard()
             {
-				$("#dashboard-content").load("<?php echo getContentHandler(); ?>&nocache=" + Date.now());
+                /*var scrolls = [];
+                var tables = $("#dashboard-content").find("table");
+                if(tables != null)
+                {
+                    tables.each(t => scrolls.push(t.scrollLeft()));
+                }*/
+
+                $("#dashboard-content").load("<?php echo getContentHandler(); ?>&nocache=" + Date.now());
+
+                /*if(scrolls != null)
+                {
+                    var tables = $("#dashboard-content").find("table");
+                    for(var i =0; i < scrolls.length  || i < tables.length; i++)
+                    {
+                        tables[i].scrollLeft(scrolls[i]);
+                    }
+                }*/
                 /*var xhr=null;
-    
+
                 if (window.XMLHttpRequest) {
                     xhr = new XMLHttpRequest();
                 }
@@ -259,7 +275,6 @@ function getRefreshTimeout()
                     echo "setTimeout(reloadDashboard, " . $timeout . ");\n";
                 ?>
             }
-			
 			reloadDashboard();
         </script>
     </body>
