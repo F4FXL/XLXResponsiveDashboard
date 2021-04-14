@@ -70,8 +70,6 @@ foreach ($oparray as $confs) {
 	$output = shell_exec($cmd);
 
 	$oparray = preg_split('/\n+/', trim($output));
-
-
 ?>
 <table class="table table-hover table-sm table-sm-responsive">
     <thead class="thead-light">
