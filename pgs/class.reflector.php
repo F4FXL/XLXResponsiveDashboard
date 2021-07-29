@@ -68,7 +68,7 @@ class xReflector {
          $tmpStations       = $XML->GetAllElements($AllStationsString, "STATION");
          for ($i=0;$i<count($tmpStations);$i++) {
              $Station = new Station($XML->GetElement($tmpStations[$i], 'Callsign'), $XML->GetElement($tmpStations[$i], 'Via node'), $XML->GetElement($tmpStations[$i], 'Via peer'), $XML->GetElement($tmpStations[$i], 'LastHeardTime'), $XML->GetElement($tmpStations[$i], 'On module'));
-             $this->AddStation($Station, true);
+             $this->AddStation($Station, false);
          }
          
          $AllPeersString    = $XML->GetElement($this->XMLContent, $LinkedPeersName);
