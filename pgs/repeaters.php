@@ -42,7 +42,7 @@
                   $callsignWithSuffix = $Reflector->Nodes[$i]->GetCallSign();
                   $callsignWithSuffix = formatCall($callsignWithSuffix, $suffix);
                   ?>
-                        <a href="https://www.aprsdirect.com/details/main/name/<?php echo formatCallForAPRS($callsignWithSuffix);?>"
+                        <a href="https://aprs-map.info/details/main/name/<?php echo formatCallForAPRS($callsignWithSuffix);?>"
                             target="_blank"><?php echo getSGS($callsignWithSuffix);?></a>
                     </td>
                     <?php
