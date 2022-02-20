@@ -52,7 +52,7 @@ for ($i=0;$i<$Reflector->StationCount();$i++) {
         echo '</td>
         <td><a href="https://www.qrz.com/db/' . $Reflector->Stations[$i]->GetCallsignOnly() . '" class="pl" target="_blank">' . $Reflector->Stations[$i]->GetCallsignOnly() . '</a></td>
         <td>' . $Reflector->Stations[$i]->GetSuffix() . '</td>
-        <td><a href="https://www.aprsdirect.com/details/main/name/' . $Reflector->Stations[$i]->GetCallsignOnly() . '" class="pl" target="_blank"><img src="./img/sat.png" alt=""></a></td>
+        <td><a href="https://aprs-map.info/details/main/name/' . $Reflector->Stations[$i]->GetCallsignOnly() . '" class="pl" target="_blank"><img src="./img/sat.png" alt=""></a></td>
         <td>' . formatCall(getSGS($Reflector->Stations[$i]->GetVia()));
         if ($Reflector->Stations[$i]->GetPeer() != $Reflector->GetReflectorName()) {
             echo ' / ' . $Reflector->Stations[$i]->GetPeer();
@@ -124,7 +124,7 @@ for ($j=0;$j<$maxNodes;$j++)
         if($j < count($nodesInModule))
         {
             echo '<td>';
-            echo '<a href="https://www.aprsdirect.com/details/main/name/' . formatCallForAPRS($nodesInModule[$j]) . '" class="pl" target="_blank">'. formatCall($nodesInModule[$j]) .'</a>';
+            echo '<a href="https://aprs-map.info/details/main/name/' . formatCallForAPRS($nodesInModule[$j]) . '" class="pl" target="_blank">'. formatCall($nodesInModule[$j]) .'</a>';
             echo '</td>';
         }
         else
