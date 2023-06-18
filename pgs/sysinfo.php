@@ -16,7 +16,7 @@ function shapeSpace_server_memory_usage()
 
 function shapeSpace_server_uptime()
 {
-	$uptime = floor(preg_replace ('/\.[0-9]+/', '', file_get_contents('/proc/uptime')));
+	$uptime = floor((int) preg_replace ('/\.[0-9]+/', '', file_get_contents('/proc/uptime')));
 	return (int)$uptime;	
 }
 
