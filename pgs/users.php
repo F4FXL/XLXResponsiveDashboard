@@ -36,7 +36,8 @@ for ($i=0;$i<$Reflector->StationCount();$i++) {
         echo '
         <tr>
         <th scope="row">';
-        if ($i == 0 && $Reflector->Stations[$i]->GetLastHeardTime() > (time() - 60)) {
+	echo "<!--" . $Reflector->Stations[$i]->GetLastHeardTime()  . " " . (time() + 7200 - 60) . " -->";
+        if ($i == 0 && $Reflector->Stations[$i]->GetLastHeardTime() > (time() + 7200 - 60)) {
             echo '<img src="./img/tx.gif" style="margin-top:3px;" height="20"/>';
         } else {
             echo($i + 1);
