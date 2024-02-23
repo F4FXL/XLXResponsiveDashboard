@@ -45,7 +45,7 @@ for ($i=0;$i<count($Reflectors);$i++) {
    <th scope="row">'.($i+1).'</th>
    <td><a href="'.$DASHBOARDURL.'" target="_blank" class="pl" title="Visit the Dashboard of&nbsp;'.$NAME.'">'.$NAME.'</a></td>
    <td>'.$COUNTRY.'</td>
-   <td><img src="./img/'; if ($LASTCONTACT<(time()-600)) { echo 'down'; } ELSE { echo 'up'; } echo '.png" class="table-status" alt=""></td>
+   <td><img src="./img/'; if ($LASTCONTACT<(time()-7200)) { echo 'down'; } ELSE { echo 'up'; } echo '.png" class="table-status" alt=""></td>
    <td>'.$COMMENT.'</td>
  </tr>';
 }
